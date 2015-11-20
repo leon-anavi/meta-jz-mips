@@ -1,0 +1,35 @@
+From e5808583edb22d3912a7b60f22be26bdf35516ee Mon Sep 17 00:00:00 2001
+From: Armin Kuster <akuster808@gmail.com>
+Date: Fri, 8 May 2015 18:47:59 -0700
+Subject: [PATCH] mmc up spt text
+
+Signed-off-by: Armin Kuster <akuster808@gmail.com>
+---
+ include/configs/ci20.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/include/configs/ci20.h b/include/configs/ci20.h
+index f4337c0..7ecbbb3 100644
+--- a/include/configs/ci20.h
++++ b/include/configs/ci20.h
+@@ -296,7 +296,7 @@
+ #ifdef CONFIG_SPL_MMC_SUPPORT
+ 
+ #define CONFIG_SPL_TEXT_BASE		0xf4000a00
+-#define CONFIG_SPL_MAX_SIZE		((14 * 1024) - 0xa00)
++#define CONFIG_SPL_MAX_SIZE		((14 * 1024) - 0x800)
+ 
+ #else /* !CONFIG_SPL_MMC_SUPPORT */
+ 
+@@ -307,7 +307,7 @@
+ #define CONFIG_SPL_NAND_LOAD
+ 
+ #define CONFIG_SPL_TEXT_BASE		0xf4000800
+-#define CONFIG_SPL_MAX_SIZE		((14 * 1024) - 0x800)
++#define CONFIG_SPL_MAX_SIZE		((14 * 1024) - 0x800)
+ 
+ /* the NAND SPL is small enough to enable serial */
+ #define CONFIG_SPL_SERIAL_SUPPORT
+-- 
+2.3.5
+

@@ -1,0 +1,26 @@
+From 3ade0f7ce220e5310143d95d3a2081833e974705 Mon Sep 17 00:00:00 2001
+From: Armin Kuster <akuster808@gmail.com>
+Date: Fri, 8 May 2015 18:22:59 -0700
+Subject: [PATCH] up spl text size
+
+Signed-off-by: Armin Kuster <akuster808@gmail.com>
+---
+ include/configs/ci20.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/include/configs/ci20.h b/include/configs/ci20.h
+index f4337c0..f61253c 100644
+--- a/include/configs/ci20.h
++++ b/include/configs/ci20.h
+@@ -307,7 +307,7 @@
+ #define CONFIG_SPL_NAND_LOAD
+ 
+ #define CONFIG_SPL_TEXT_BASE		0xf4000800
+-#define CONFIG_SPL_MAX_SIZE		((14 * 1024) - 0x800)
++#define CONFIG_SPL_MAX_SIZE		((14 * 1024) - 0xa00)
+ 
+ /* the NAND SPL is small enough to enable serial */
+ #define CONFIG_SPL_SERIAL_SUPPORT
+-- 
+2.3.5
+

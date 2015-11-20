@@ -1,8 +1,0 @@
-define KMACHINE jz-mips
-define KTYPE tiny
-define KARCH mips
-
-include ktypes/tiny/tiny.scc
-branch jz-mips
-
-include jz-mips.scc

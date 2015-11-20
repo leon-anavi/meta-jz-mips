@@ -1,0 +1,13 @@
+Index: git/arch/mips/config.mk
+===================================================================
+--- git.orig/arch/mips/config.mk
++++ git/arch/mips/config.mk
+@@ -53,7 +53,7 @@ PLATFORM_RELFLAGS		+= -ffunction-section
+ LDFLAGS_FINAL			+= --gc-sections
+ OBJCFLAGS			+= --remove-section=.dynsym
+ ifdef CONFIG_SPL_BUILD
+-PLATFORM_CPPFLAGS		+= -fno-pic
++PLATFORM_CPPFLAGS		+= -fno-pic -mno-abicalls
+ else
+ PLATFORM_CPPFLAGS		+= -fpic
+ LDFLAGS_FINAL			+= -pie

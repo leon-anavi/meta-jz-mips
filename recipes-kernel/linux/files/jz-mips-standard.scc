@@ -1,8 +1,0 @@
-define KMACHINE jz-mips
-define KTYPE standard
-define KARCH mips
-
-include ktypes/standard/standard.scc
-branch jz-mips
-
-include jz-mips.scc

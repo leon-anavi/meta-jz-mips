@@ -1,7 +1,0 @@
-kconf hardware jz-mips.cfg
-
-include cfg/usb-mass-storage.scc
-include cfg/fs/vfat.scc
-
-kconf hardware jz-mips-user-config.cfg
-include jz-mips-user-patches.scc

@@ -1,0 +1,21 @@
+Index: git/arch/mips/config.mk
+===================================================================
+--- git.orig/arch/mips/config.mk
++++ git/arch/mips/config.mk
+@@ -46,15 +46,9 @@ PLATFORM_CPPFLAGS += -DCONFIG_MIPS -D__M
+ # to RAM, unless we're building SPL which doesn't relocate. $28 is always
+ # used as gp.
+ #
+-PLATFORM_CPPFLAGS		+= -G 0 -mabicalls $(ENDIANNESS)
++PLATFORM_CPPFLAGS		+= -G 0 -mno-abicalls $(ENDIANNESS)
+ PLATFORM_CPPFLAGS		+= -msoft-float
+ PLATFORM_LDFLAGS		+= -G 0 -static -n -nostdlib $(ENDIANNESS)
+ PLATFORM_RELFLAGS		+= -ffunction-sections -fdata-sections
+ LDFLAGS_FINAL			+= --gc-sections
+ OBJCFLAGS			+= --remove-section=.dynsym
+-ifdef CONFIG_SPL_BUILD
+-PLATFORM_CPPFLAGS		+= -fno-pic
+-else
+-PLATFORM_CPPFLAGS		+= -fpic
+-LDFLAGS_FINAL			+= -pie
+-endif
