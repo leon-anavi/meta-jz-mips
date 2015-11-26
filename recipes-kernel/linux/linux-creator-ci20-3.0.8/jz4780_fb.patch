@@ -1,0 +1,13 @@
+diff --git a/drivers/video/jz4780-fb/jz4780_fb.c b/drivers/video/jz4780-fb/jz4780_fb.c
+index 6f77667..db4aaec 100644
+--- a/drivers/video/jz4780-fb/jz4780_fb.c
++++ b/drivers/video/jz4780-fb/jz4780_fb.c
+@@ -1375,7 +1375,7 @@ static int jzfb_alloc_devmem(struct jzfb *jzfb)
+ 
+ 	if (jzfb->pdata->lcd_type == LCD_TYPE_LCM) {
+ 		int i;
+-		unsigned long cmd[2], *ptr;
++		unsigned long cmd[2] = { 0, 0} , *ptr;
+ 
+ 		jzfb->desc_cmd_vidmem = dma_alloc_coherent(jzfb->dev, PAGE_SIZE,
+ 					    &jzfb->desc_cmd_phys, GFP_KERNEL);
