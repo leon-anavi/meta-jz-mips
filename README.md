@@ -95,9 +95,11 @@ Under Linux, insert a USB flash drive.  Assuming the USB flash drive
 takes device /dev/sdf, use dd to copy the live image to it.  For
 example:
 
+````
 # dd if=core-image-sato-jz-mips-20101207053738.hddimg of=/dev/sdf
 # sync
 # eject /dev/sdf
+````
 
 This should give you a bootable USB flash device.  Insert the device
 into a bootable USB socket on the target, and power on.  This should
@@ -118,4 +120,6 @@ If you find you're getting corrupt images on the USB (it doesn't show
 the syslinux boot: prompt, or the boot: prompt contains strange
 characters), try doing this first:
 
+````
 # dd if=/dev/zero of=/dev/sdf bs=1M count=512
+````
