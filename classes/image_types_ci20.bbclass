@@ -17,7 +17,7 @@ BOOTDD_VOLUME_ID ?= "${MACHINE}"
 IMAGE_ROOTFS_ALIGNMENT = "2048"
 
 SDIMG_ROOTFS_TYPE ?= "ext4"
-SDIMG_ROOTFS = "${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.rootfs.${SDIMG_ROOTFS_TYPE}"
+SDIMG_ROOTFS = "${IMGDEPLOYDIR}/${IMAGE_NAME}.rootfs.${SDIMG_ROOTFS_TYPE}"
 
 # Boot partition size [in KiB]
 BOOT_SPACE ?= "102400"
@@ -28,7 +28,7 @@ IMAGE_DEPENDS_sdcard = "parted-native:do_populate_sysroot \
                         virtual/kernel:do_deploy \ 
                         ${@d.getVar('IMAGE_BOOTLOADER', True) and d.getVar('IMAGE_BOOTLOADER', True) + ':do_deploy' or ''}"
 
-SDCARD = "${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.rootfs.sdcard"
+SDCARD = "${IMGDEPLOYDIR}/${IMAGE_NAME}.rootfs.sdcard"
 SDCARD_GENERATION_COMMAND_creator-ci20 = "generate_ci20_sdcard"
 
 #

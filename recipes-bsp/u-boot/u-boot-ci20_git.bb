@@ -12,13 +12,14 @@ SRC_URI = "git://github.com/MIPS/CI20_u-boot;branch=${BRANCH}"
 #            file://mips_fixup.patch \
 #"
 
-SRCREV = "a4f583551d0025eb957ee5c9cb68657a429e4914"
+SRCREV = "dd3c1b95dac7d10b2ca5806f65e5c1050d7dd0fa"
 
 PV = "${BRANCH}"
 
 LIC_FILES_CHKSUM = "file://README;beginline=2;endline=5;md5=3c0cec9329dbcd30c8b9e7f56a12b71e"
 
 S = "${WORKDIR}/git"
+B = "${WORKDIR}/build"
 
 TARGET_LDFLAGS=""
 UBOOT_EXT = "img"
@@ -33,20 +34,22 @@ UBOOT_MAKE_TARGET = "all"
 UBOOT_SPL = "u-boot-spl.bin"
 UBOOT_SPL_IMAGE = "u-boot-${MACHINE}-${PV}-${PR}-spl.bin"
 
+
+
 do_configure () {
-    oe_runmake  ${UBOOT_MACHINE}
+    oe_runmake -C ${S} O=${B} ${UBOOT_MACHINE}
 }
 
 do_compile () {
-    oe_runmake ${UBOOT_MAKE_TARGET}
+    oe_runmake -C ${S} O=${B} ${UBOOT_MAKE_TARGET}
 }
 
 do_install () {
 	install -d ${D}/boot
-	install ${S}/${UBOOT_BINARY} ${D}/boot/${UBOOT_IMAGE}
+	install ${B}/${UBOOT_BINARY} ${D}/boot/${UBOOT_IMAGE}
 	ln -sf ${UBOOT_IMAGE} ${D}/boot/${UBOOT_BINARY}
 
-	install ${S}/spl/${UBOOT_SPL} ${D}/boot/${UBOOT_SPL_IMAGE}
+	install ${B}/spl/${UBOOT_SPL} ${D}/boot/${UBOOT_SPL_IMAGE}
 	ln -sf ${UBOOT_SPL} ${D}/boot/${UBOOT_SPL_IMAGE}
 
 	if [ -e ${WORKDIR}/fw_env.config ] ; then
@@ -66,8 +69,8 @@ addtask deploy before do_package after do_compile
 
 do_deploy () {
 	install -d ${DEPLOYDIR}
-	install ${S}/${UBOOT_BINARY} ${DEPLOYDIR}/${UBOOT_IMAGE}
-	install ${S}/spl/${UBOOT_SPL} ${DEPLOYDIR}/${UBOOT_SPL_IMAGE}
+	install ${B}/${UBOOT_BINARY} ${DEPLOYDIR}/${UBOOT_IMAGE}
+	install ${B}/spl/${UBOOT_SPL} ${DEPLOYDIR}/${UBOOT_SPL_IMAGE}
 
 	cd ${DEPLOYDIR}
 	rm -f ${UBOOT_BINARY} ${UBOOT_SYMLINK}
