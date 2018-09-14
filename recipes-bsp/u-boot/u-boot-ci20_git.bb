@@ -16,6 +16,7 @@ SRCREV = "dd3c1b95dac7d10b2ca5806f65e5c1050d7dd0fa"
 
 PV = "${BRANCH}"
 
+LICENSE = "GPL-2.0+"
 LIC_FILES_CHKSUM = "file://README;beginline=2;endline=5;md5=3c0cec9329dbcd30c8b9e7f56a12b71e"
 
 S = "${WORKDIR}/git"
